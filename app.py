@@ -1,5 +1,5 @@
 import json, config
-from flask import Flask, request
+from flask import Flask, request, render_template
 from binance.client import Client
 from binance.enums import *
 
@@ -17,8 +17,8 @@ def order(side, quantity, symbol, order_type=ORDER_TYPE_MARKET):
     return order
 
 @app.route('/')
-def hello_world():
-    return 'Hello, World'
+def welcome():
+    return render_template('index.html')
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
